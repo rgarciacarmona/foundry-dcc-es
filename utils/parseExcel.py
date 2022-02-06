@@ -12,8 +12,16 @@ df_excel.drop(df_excel.index[[0]],  inplace=True)
 outF = open("es.json", "w")
 outF.write("{\n")
 
-columns = df_excel.columns
+
+index = 1
 for row in df_excel.itertuples():
-    outF.write('"' + row[2] +'"'+ ":" + '"' +  row[4] + '"' + ",\n")
+    outF.write('  "' + row[2] +'"'+ ": " + '"' +  row[4] + '"')
+    
+    print(str(index) + " " + str(df_excel.shape[0]))
+    if index != df_excel.shape[0]:
+        outF.write(",")
+        
+    outF.write("\n")
+    index = index + 1
         
 outF.write("}\n")
