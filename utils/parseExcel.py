@@ -17,7 +17,6 @@ index = 1
 for row in df_excel.itertuples():
     outF.write('  "' + row[2] +'"'+ ": " + '"' +  row[4] + '"')
     
-    print(str(index) + " " + str(df_excel.shape[0]))
     if index != df_excel.shape[0]:
         outF.write(",")
         
