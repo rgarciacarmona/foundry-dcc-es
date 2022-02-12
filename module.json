@@ -2,7 +2,7 @@
   "name": "dcc-es",
   "title": "DCC Dungeon Crawl Classics Spanish Translation",
   "description": "Traducción al español para el sistema Clásicos del Mazmorreo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "minimumCoreVersion" : "0.6.6",
   "compatibleCoreVersion":"0.8.9",
   "author": "vanritchen",
