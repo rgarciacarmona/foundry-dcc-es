@@ -8,7 +8,21 @@ import translators as ts
 # pandas
 # translators
 
-dict = list();
+def parse_line(line, dictionary):
+    print(line)
+    if line == "{" or line =="}" or line==" ":
+        return;
+    
+    splitted = line.split(":", 2);
+    key   = splitted[0].replace('"', '')
+    value = splitted[1][1:-1].replace('"', '')
+    dictionary[key] = value
+    
+def generate_dict(lines):
+    dictionary = dict()
+    for line in lines:
+        parse_line(line.strip(), dictionary)
+    return dictionary
 
 def translate(en):
    matches = re.findall(r'{(.+?)}',en)
@@ -37,25 +51,19 @@ def translate(en):
            
    return translated
            
+print("PARSING ####")
+print("Generating ENG dict")
+en_dict = generate_dict(fileinput.input(['en.json'], encoding="utf-8"))
+print("Generating ES dict")
+es_dict = generate_dict(fileinput.input(['es.json'], encoding="utf-8"))
+print("COMBINING ####")
+combined = list()
+for key,en_value in en_dict.items():
+    es_value = es_dict.get(key)
+    if (es_value == None):
+        es_value = translate(en_value)
+    print("ES: " + es_value)
+    combined.append({'key': key, 'en' : en_value, 'es' : es_value})
 
-def parse(line):
-    if line == "{" or line =="}":
-        return;
-    
-    splitted = line.split(":", 2);
-    key = splitted[0].replace('"', '')
-    print("KEY: " + key)
-    en  = splitted[1][1:-1].replace('"', '')
-    print("EN: ." + en + ".")
-    
-    es = translate(en)       
-    print("ES: " + es)
-    dict.append({'key': key, 'en' : en, 'es' : es})
-   
-   
-print("PARSING")
-for line in fileinput.input(['en.json']):
-    parse(line.strip())
-
-print("WRITING XLSX")
-df = pandas.DataFrame(dict).to_excel("excel.xlsx")  
+print("WRITING XLSX ####")
+df = pandas.DataFrame(combined).to_excel("excel.xlsx")  
