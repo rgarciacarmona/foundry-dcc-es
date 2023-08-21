@@ -2,7 +2,7 @@
   "name": "dcc-es",
   "title": "DCC Dungeon Crawl Classics Spanish Translation",
   "description": "Traducción al español para el sistema Clásicos del Mazmorreo",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "minimumCoreVersion" : "0.6.6",
   "compatibleCoreVersion":"0.8.9",
   "author": "vanritchen",
@@ -13,6 +13,6 @@
     "path": "es.json"
   }],
   "url": "https://github.com/rgarciacarmona/foundry-dcc-es/",
-  "manifest": "https://github.com/rgarciacarmona/foundry-dcc-es/raw/v0.0.2/module.json",
-  "download": "https://github.com/rgarciacarmona/foundry-dcc-es/archive/v0.0.2.zip"
+  "manifest": "https://github.com/rgarciacarmona/foundry-dcc-es/raw/v0.0.3/module.json",
+  "download": "https://github.com/rgarciacarmona/foundry-dcc-es/archive/v0.0.3.zip"
 }
